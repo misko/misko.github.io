@@ -7,7 +7,7 @@ tags: [signal_process,doa,tdoa]
 
 # Motivation
 
-You lose your keys, but not to worry, they have a bluetooth enabled tag attached to them. Using your phone you send a radio request, it emits outwards through space around you, piercing through objects like an unstoppable tsunami! Luckily, the tag hears your plea! You hear the tag emit a sound!, but the sound is faint, you slowly move through space, poorly estimating the gradient of volume, after an initial wrong turn, you backtrack and try again, this time the sound gets louder and louder, until you're face to face with your cat, purring loudly while sitting on top of them!
+You lose your keys, but not to worry, they have a bluetooth enabled tag attached to them. Using your phone you send a radio request, it emits outwards through space around you, piercing through objects like an unstoppable tsunami! Luckily, the tag hears your plea! You hear the tag emit a sound!, but the sound is faint, you slowly move through space, poorly estimating the gradient of volume, after an initial wrong turn, you backtrack and try again, this time the sound gets louder and louder, until you're face to face with your cat, purring loudly while sitting on top of your keys!
 
 ![Finding your keys](/assets/2023-6-11-tag-finding.gif)
 *An illustration of what your ears might hear when looking the source location of a sound*
