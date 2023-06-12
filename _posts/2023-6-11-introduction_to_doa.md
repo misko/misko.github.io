@@ -12,8 +12,7 @@ You lose your keys, but not to worry, they have a bluetooth enabled tag attached
 ![Finding your keys](/assets/2023-6-11-tag-finding.gif)
 *An illustration of what your ears might hear when looking the source location of a sound*
 
-It feels like there is something natural about associating direction with sound, but how does it work?  :q
-Ls 
+It feels like there is something natural about associating direction with sound, but how does it work?  
 
 Your brain has two pieces of information, the sound heard from both ears. From this information there is two basic things you or your brain could do, 
 1. Use the volume of the sounds. Maybe it sounds louder in your right ear vs your left ear, then it's a pretty good chance the sound is coming from your right. You could turn your head until the sound is equal loudness in both ears, once you stop turning your head you are confident the sound is either directly in front or behind you. Maybe you try moving forward and the sound gets quieter, then it must be coming from behind you. 
