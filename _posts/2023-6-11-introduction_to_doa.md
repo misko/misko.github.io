@@ -5,7 +5,7 @@ categories: [signal_processing]
 tags: [signal_process,doa,tdoa]
 ---
 
-# Motivation
+## Motivation
 
 You lose your keys, but not to worry, they have a bluetooth enabled tag attached to them. Using your phone you send a radio request, it emits outwards through space around you, piercing through objects like an unstoppable tsunami! Luckily, the tag hears your plea! You hear the tag emit a sound!, but the sound is faint, you slowly move through space, poorly estimating the gradient of volume, after an initial wrong turn, you backtrack and try again, this time the sound gets louder and louder, until you're face to face with your cat, purring loudly while sitting on top of your keys!
 
@@ -23,7 +23,7 @@ Approach (1) works well in low noise environments when you can clearly hear the 
 
 Approach (1) uses the volume from each ear but discards the information about what was heard, approach (2) on the other hand discards the volume and uses mostly the information! Let's think about this for a second, sound travels at roughly 340m/s (1100ft/s), the average width of an adult human head is ~0.145m (6inches), the maximum difference in time (sound-time) between your two ears is 0.0004s! Your brain can somehow compare the left and right ear signals, determine a difference smaller than 0.0004s and use it to give you a sense of direction! 
 
-# Waves
+## Waves
 
 Let's say we want to send our friend an electronically generated hello signal using sound (or maybe radio), how can we do this? 
 
@@ -48,7 +48,7 @@ Our problem in the above illustration is that we are just sending 1 or -1 out in
 
 All is not lost though, we just need a layer of abstraction. 
 
-# Encoding information into waves
+## Encoding information into waves
 
 ![Single wave emission](/assets/2023-6-11-single-wave-emission.gif)
 *Transmission of a single frequency wave*
@@ -60,7 +60,7 @@ How about instead of trying to transmit a constant value, we encode our informat
 ![AM digital transmission](/assets/2023-6-11-am-digital-transmission.gif)
 *The binary message [1,-1,1] is encoded into amplitudes [1.0,0.5,1.0] of a fixed frequency wave that is transmitted to our friend!*
 
-# Direction of arrival estimation
+## Direction of arrival estimation
 
 Getting to the real meat of this post, how to solve the original problem: for a set of physical detectors (human ears in the initial example above), given some received signal (sound or radio) how can we estimate the location of the source?
 
