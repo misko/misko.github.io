@@ -21,7 +21,7 @@ Your brain has two pieces of information, the sound heard from both ears. From t
 
 Approach (1) works well in low noise environments when you can clearly hear the signal and can sense a large change in volume with small change in space. But imagine you are guiding a boat on a foggy night, and you hear a loud fog horn, oh no! there must be land nearby?! in the moment you can't tell which ear it sounds louder in, the fog horn is just too loud! What do you do?
 
-Approach (1) uses the volume from each ear but discards the information about what was heard, approach (2) on the other hand discards the volume and uses mostly the information! Let's think about this for a second, sound travels at roughly 340m/s (1100ft/s), the average width of an adult human head is ~0.145m (6inches), the maximum difference in time (sound-time) between your two ears is 0.0004s! Your brain can somehow compare the left and right ear signals, determine a difference smaller than 0.0004s and use it to give you a sense of direction! 
+Approach (1) uses the volume from each ear but discards the information about what was heard, approach (2) on the other hand discards the volume and uses mostly the time information! Let's think about this for a second, sound travels at roughly 340m/s (1100ft/s), the average width of an adult human head is ~0.145m (6inches), the maximum difference in time (sound-time) between your two ears is 0.0004s! Your brain can somehow compare the left and right ear signals, determine a difference smaller than 0.0004s and use it to give you a sense of direction! 
 
 ## Waves
 
