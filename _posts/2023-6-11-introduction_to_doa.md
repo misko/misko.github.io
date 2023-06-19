@@ -72,33 +72,33 @@ It's important to separate out the direction of a source [Direction Of Arrival -
 ![Audio Time-Difference-Of_Arrival TDOA](/assets/2023-6-11-tdoa-estimate.gif)
 *We fix the location of two microphones and record the sound coming from a speaker. The signal from each microphone is recorded and shown above. It is clear that the signal from microphone 1 (the microphone farther from the speaker) is identical to the signal received by microphone 0 , but it is delayed by some time because it is farther away from the speaker. We can estimate this time delay using cross correlation (right most plot above).* 
 
-To estimate the direction of a sound source we could do something similar to what your brain does [ITD](https://en.wikipedia.org/wiki/Interaural_time_difference). The idea here is that a delay in hearing a sound in one ear versus the other tells us which direction the sound came from. In this section lets replace ears by microphones, record the signal at each, estimate the time delay between the two recordings, and finally use that delay to determine the direction of the source.
+To estimate the direction of a sound source we could do something similar to what your brain does [ITD](https://en.wikipedia.org/wiki/Interaural_time_difference). The idea here is that a delay in hearing a sound in one ear versus the other tells us which direction the sound came from. In this section let's replace ears by microphones, record the signal at each, estimate the time delay between the two recordings, and finally use that delay to determine the direction of the source.
 
 ### Estimating time delay using cross correlation
 
-To estimate the time delay ([Time Difference Of Arrival TDOA](https://en.wikipedia.org/wiki/Time_of_arrival) we use a technique called [cross correlation](https://en.wikipedia.org/wiki/Cross-correlation). The idea here is we have two signals, we take a small piece of the first signal and then compare it to every position on the other signal. For each comparison we compute a simiarity value (dot product) between the two signals. When the signals are similar, the similarity value is high and we can be more confident they match! 
+To estimate the time delay ([Time Difference Of Arrival TDOA](https://en.wikipedia.org/wiki/Time_of_arrival) we use a technique called [cross correlation](https://en.wikipedia.org/wiki/Cross-correlation). The idea here is we have two signals, we take a small piece of the first signal and then compare it to every position on the other signal. For each comparison we compute a similarity value (dot product) between the two signals. When the signals are similar, the similarity value is high and we can be more confident they match! 
 
 ![Cross correlation](/assets/2023-6-11-cross-correlation.gif)
 
-In the example above, the signal received by microphone 1 is clearly the same signal as from microphone 0, only it has been delayed by 0.1 seconds. Taking a small slice of the signal from microphone 0 (0.4s to 0.7s), we can compare it to every slice of signal from microphone 1. At each position we take the two slices their dot product, this value (cross correlation). Looking at the cross correlation plot , we see a large peak at 0.5s. This is exactly the peak corresponding to a 0.1s delay ([0.1s=0.5s(peak)-0.4s(slice start)])!
+In the example above, the signal received by microphone 1 is clearly the same signal as from microphone 0, only it has been delayed by 0.1 seconds. Taking a small slice of the signal from microphone 0 (0.4s to 0.7s), we can compare it to every slice of signal from microphone 1. At each position we take the dot product of the two slices, this value (cross correlation). Looking at the cross correlation plot , we see a large peak at 0.5s. This is exactly the peak corresponding to a 0.1s delay ([0.1s=0.5s(peak)-0.4s(slice start)])!
 
 ### Intuition behind time delay
 
-So lets say we successfully recorded signals at both micropohnes and determine the time delay using cross correlation, great, what does that mean?! 
+So let's say we successfully recorded signals at both microphones and determined the time delay using cross correlation, great, what does that mean?! 
 
-If we detect there was absolutely no delay between the microphones than the distance from the speaker to both microphones must be identical! There is only two directions this could be, directly ahead or behind!
+If we detect that there was no delay between the microphones then the distance from the speaker to both microphones must be identical! There are only two directions this could be, directly ahead or behind!
 
 Directly in front             |  Directly behind
 :-------------------------:|:-------------------------:
 ![](/assets/2023-6-11-front.gif)  |  ![](/assets/2023-6-11-back.gif) 
 
-If the speaker was directly to the left or right of our microphones, then the delay registered must be at its maximal magnitude. If its to the left , then the left microphone detects it first, and the right microphone is maximally delayed relative to all other directions!
+If the speaker was directly to the left or right of our microphones, then the delay registered must be at its maximal magnitude. If it's to the left , then the left microphone detects it first, and the right microphone is maximally delayed relative to all other directions!
 
 Directly to left             |  Directly to right
 :-------------------------:|:-------------------------:
 ![](/assets/2023-6-11-left.gif)  |  ![](/assets/2023-6-11-right.gif) 
 
-So the larger in magnitude the time delay is, the more we know its to the left or right of our microphones. If the time delay is positive (left microphone recieved the signal first) then we know the speaker is to our left. Using both the magnitude and sign of the time delay we should be able to narrow down the direction!
+So the larger in magnitude the time delay is, the more we know it's to the left or right of our microphones. If the time delay is positive (left microphone received the signal first) then we know the speaker is to our left. Using both the magnitude and sign of the time delay we should be able to narrow down the direction!
 
 
 ### From time delay to source position (General case)
@@ -109,7 +109,7 @@ $\Delta_{space} = \Delta_{time} \cdot s_{sound}$
  
 Given some of the intuition from above, you might guess that we can't accurately determine the specific $x,y$ coordinates of the speaker but we can determine the direction. 
 
-To make the math simplier (for now) lets assume the speaker is at some fixed distance $r_0$ from microphone $0$ and $r_1$ from microphone $1$. If we assume $r_0$ and $r_1$ the location of the speaker lies at the intersection of two circles centered around microphone $0$ and microphone $1$ (with radius $r_0$ and $r_1$).
+To make the math easier (for now) let's assume the speaker is at some fixed distance $r_0$ from microphone $0$ and $r_1$ from microphone $1$. If we assume $r_0$ and $r_1$ the location of the speaker lies at the intersection of two circles centered around microphone $0$ and microphone $1$ (with radius $r_0$ and $r_1$).
 
 Using the coordinate axis parallel to the microphones we can derive a solution for the speakers $x$ coordinate (given $r_0$),
 
@@ -121,13 +121,13 @@ $x = \frac{d^2-\Delta_{space}^2}{2 \cdot d} - \frac{\Delta_{space}}{d} \cdot r_0
 
 $y = \sqrt{r_0^2+x^2}$
  
-This is interesting! Given $\Delta_{space}$ the $x$ coordinate of the speaker is linear in terms of $r_0$ (distance to) the speaker. To get a better idea of what this looks like in reality, lets fix $\Delta_{space}$ (the difference in distance the signal travelled to the microphones), and solve the above equation for all possible $r_0$.
+This is interesting! Given $\Delta_{space}$ the $x$ coordinate of the speaker is linear in terms of $r_0$ (distance to) the speaker. To get a better idea of what this looks like in reality, let's fix $\Delta_{space}$ (the difference in distance the signal traveled to the microphones), and solve the above equation for all possible $r_0$.
 
 
 ![Emitter path solution](/assets/2023-6-11-emmiter-path-sol-0.6.gif)
 *Fixing $\Delta_{space}=0.6$ and enumerating all possible values for $r_0$ (distance from speaker to microphone $0$) we can see a path along which the speaker could be located. As the value of $r_0$ grows the difference in angle formed between the microphone normal vector and the speaker position converges.*
 
-In the above illustration we fix $\Delta_{space}=0.6$ and solve for all possible positions of the speaker. From the above its clear that a single $\Delta_{space}$ gives rise to exactly one path that determines where the speaker could be. We can easily enumerate a contour map of $\Delta_{space}$ across the X/Y plane and see that this is indeed the case.
+In the above illustration we fix $\Delta_{space}=0.6$ and solve for all possible positions of the speaker. From the above it's clear that a single $\Delta_{space}$ gives rise to exactly one path that determines where the speaker could be. We can easily enumerate a contour map of $\Delta_{space}$ across the X/Y plane and see that this is indeed the case.
 
 In this section we covered how to convert an estimate of $\Delta_{time}$ to $\Delta_{space}$ and then use that to determine a curve on which the speaker must lay on. One downside of this curve is that near the origin it bends quite a bit, so we cannot be sure of the direction of the sound. However when the speaker is far away from our microphones the curve behaves as a line, and we can be certain of the direction.
 
@@ -147,3 +147,5 @@ $\theta = sin^{-1}( \frac{\Delta_{space}}{d} )$
 ## Next time
 
 Using the above methods we can estimate sound direction using two (or more)  microphones placed in a linear array. Next we will look how far apart we might want to place our microphones, how sampling speed might affect this and how we can proceed towards estimating direction of radio signals.
+
+
