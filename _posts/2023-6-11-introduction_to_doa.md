@@ -5,6 +5,7 @@ categories: [signal_processing]
 tags: [signal_process,doa,tdoa]
 math: true
 image: /assets/2023-6-11-post-image.png
+description: Understanding waves and basic DOA (Direction of arrival) estimation
 ---
 
 ## Motivation
