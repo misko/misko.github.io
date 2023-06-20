@@ -76,7 +76,7 @@ To estimate the direction of a sound source we could do something similar to wha
 
 ### Estimating time delay using cross correlation
 
-To estimate the time delay ([Time Difference Of Arrival TDOA](https://en.wikipedia.org/wiki/Time_of_arrival) we use a technique called [cross correlation](https://en.wikipedia.org/wiki/Cross-correlation). The idea here is we have two signals, we take a small piece of the first signal and then compare it to every position on the other signal. For each comparison we compute a similarity value (dot product) between the two signals.
+To estimate the time delay ([Time Difference Of Arrival TDOA](https://en.wikipedia.org/wiki/Time_of_arrival)) we use a technique called [cross correlation](https://en.wikipedia.org/wiki/Cross-correlation). The idea here is we have two signals, we take a small piece of the first signal and then compare it to every position on the other signal. For each comparison we compute a similarity value (dot product) between the two signals.
 
 ![Cross correlation](/assets/2023-6-11-cross-correlation.gif)
 
