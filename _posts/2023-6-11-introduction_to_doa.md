@@ -121,7 +121,7 @@ $x = \frac{d^2-\Delta_{space}^2}{2 \cdot d} - \frac{\Delta_{space}}{d} \cdot r_0
 
 $y = \sqrt{r_0^2+x^2}$
  
-This is interesting! Given $\Delta_{space}$ the $x$ coordinate of the source is linear in terms of $r_0$ (distance between microphone $0$ and the source). To get a better idea of what this looks like in reality, let's fix $\Delta_{space}$ (the difference in distance the signal traveled to the microphones), and solve the above equation for all possible $r_0$.
+This is interesting! Given $\Delta_{space}$ the $x$ coordinate of the source is linear in terms of $r_0$ (distance between microphone $0$ and the source). To get a better idea of what both source $x,y$ coordinates look like, let's fix $\Delta_{space}$ as constant (the difference in distance the signal traveled to the microphones), and solve the above equation for all possible $r_0$.
 
 
 ![Emitter path solution](/assets/2023-6-11-emmiter-path-sol-0.6.gif)
