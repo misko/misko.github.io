@@ -22,13 +22,13 @@ Some details that are not directly relevant but might help guide this post:
 ![Single microphone recording](/assets/2023-6-21-single-microphone-recording.gif)
 *Using a single microphone you record the band's rehearsal and confirm it is noisy! The source here is the band and the receiver is the single microphone that is recording*
 
-Being the good friend you are, you venture down to the bands new venue and start recording while they rehearse. Immediately you confirm the hypothesis, using a single microphone the noise is too great, and affects the recording quality.
+Being the good friend you are, you venture down to the bands new venue and start recording while they rehearse. Immediately you confirm the hypothesis, using a single microphone the noise is too big, you can barely hear Bob!
 
 What can you do?
 
 # More microphones
 
-You get to thinking, if one microphone is too noisy, maybe the average of two microphones might cancel out the (uncorrelated) noise! You get to work, set up an additional microphone and start recording. However you quickly realize the average signal of the two microphones is more noisy than the original recording! How is that possible?
+You get to thinking, if one microphone is too noisy, maybe the average of two microphones might cancel out the (uncorrelated) noise! You get to work, set up an additional microphone and start recording. However you quickly realize the average signal of the two microphones sounds worse than the original recording! How is that possible?
 
 ![Average of two microphones half wavelength apart](/assets/2023-6-21-two-microphones-noise-halfwave.gif)
 *Using the average of two microphones placed some distance apart results in a worse signal than any single recording from either microphone alone!*
@@ -38,17 +38,19 @@ Baffled by the results, you stare at the above analysis and try to figure out wh
 ![Average of two microphones full wavelength apart](/assets/2023-6-21-two-microphones-noise-fullwave.gif)
 *Spacing the microphones a full wavelength apart increases the quality of the averaged signal by quite a bit! At least compared to the original spacing of half a wavelength (above)*
 
-By golly! It worked! The noise is reduced (even though only a little) and the signal prevails. You can't help but wonder, if the angle between the microphones and the direction of the source sound matters, was it just luck that half wavelength was a bad spacing and full wavelength was a good spacing? Is there a better spacing you could choose for this setup? What if instead of changing the spacing, you just artificially reduce the delay from the second microphone, would that fix the averaging issue? By how much time should you shift the signal from the second microphone? 
+By golly! It worked! The noise is reduced (even though only a little) and the signal prevails. You can't help but wonder, if the angle between the microphones and the direction of the source sound matters (it does), was it just luck that half wavelength was a bad spacing and full wavelength was a good spacing? Is there a better spacing you could choose for this setup? What if instead of changing the spacing, you just artificially reduce the delay from the second microphone, would that fix the averaging issue? By how much time should you shift the signal from the second microphone? 
 
-Based on the previous [post](/posts/introduction_to_doa), you might think to use cross correlation to determine this time delay, and that would work. However let's consider another approach here, one that exploits the wave nature of our signal. If we assume that our signal is wave-like can we just speed up or slow down the [phase](https://en.wikipedia.org/wiki/Phase_(waves)) of the wave to determine the delay? 
+Based on the previous [post](/posts/introduction_to_doa), you might think to use cross correlation to determine this time delay, and that would work. However let's consider another approach here, one that exploits the wave nature of our signal. If we assume that our signal is wave-like, can we just speed up or slow down the [phase](https://en.wikipedia.org/wiki/Phase_(waves)) of the wave to determine the delay? 
 
-If we can find this delay, we could shift one of the signals in such a way to line up peaks with peaks (and troughs with troughs) and sum them together to get a better average signal!
+If we can find the delay (phase offset) between signals, we could shift one of the signals in such a way to line up peaks with peaks (and troughs with troughs) and sum them together to get a better average signal!
 
 ## Beamforming assumptions
 
 Let's assume the signal at microphone 0 (right microphone) is $sin(2 \pi t)$ and the signal at microphone 1 (left microphone) is $sin(2 \pi t+\Delta_{phase})$. If we can figure out $\Delta_{phase}$ then we could shift the signal of microphone 1 by this amount and perfectly line up peaks with peaks! 
 
-It's clear from the above signal assumptions that we must limit $\Delta_{phase}$ to the interval $[-\pi,\pi]$ since any value outside this would just repeat an observation in the original interval $[-\pi,\pi]$. This means that as long as we can confidently say the $\Delta_{phase}$ is bound in the range of $[-\pi,\pi]$ we can use the above assumption. The way we can bound $\Delta_{phase}$ to the desired region is by enforcing that the distance between receivers is less than $\frac{\lambda}/{2}$ ($\lambda$ = wavelength). If this is true, then the distance cannot be more than $\frac{\lambda}{2}$, which is exactly half a wave cycle, which is exactly $\lvert \Delta_{phase} \rvert \lt \pi$. Cool! So if we manage to keep the distance between receivers relatively small, and we can keep the $\Delta_{phase}$ in a nice region to work with.
+It's clear from the above signal assumptions that we must limit $\Delta_{phase}$ to the interval $[-\pi,\pi]$ since any value outside this would just repeat an observation in the original interval $[-\pi,\pi]$. This means that as long as we can confidently say the $\Delta_{phase}$ is bound in the range of $[-\pi,\pi]$ we can use the above assumption. 
+
+We can bound $\Delta_{phase}$ to the desired region is by enforcing that the distance between microphones (receivers) is less than $\frac{\lambda}/{2}$ ($\lambda$ = wavelength). If this is true, then the distance cannot be more than $\frac{\lambda}{2}$, which is exactly half a wave cycle, which is exactly $\lvert \Delta_{phase} \rvert \lt \pi$. Cool! So if we manage to keep the distance between receivers relatively small we can keep the $\Delta_{phase}$ in a nice region to work with.
 
 ## Complex numbers
 
