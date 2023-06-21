@@ -33,7 +33,7 @@ You get to thinking, if one microphone is too noisy, maybe the average of two mi
 ![Average of two microphones half wavelength apart](/assets/2023-6-21-two-microphones-noise-halfwave.gif)
 *Using the average of two microphones placed some distance apart results in a worse signal than any single recording from either microphone alone!*
 
-Baffled by the results, you stare at the above analysis and try to figure out what is going on. It looks like the time delay between the two microphones lines up the peaks from one microphones signal with the troughs in the other microphones signal. This is probably causing [destructive interference](https://en.wikipedia.org/wiki/Wave_interference) and erasing the signal (when averaging). Thinking on your feet you figure that if the current spacing is causing destructive interference (lining up peaks with troughts), then doubling the spacing must line up the peaks with peaks and increase signal! 
+Baffled by the results, you stare at the above analysis and try to figure out what is going on. It looks like the time delay between the two microphones lines up the peaks from one microphones signal with the troughs in the other microphones signal. This is probably causing [destructive interference](https://en.wikipedia.org/wiki/Wave_interference) and erasing the signal (when averaging). Thinking on your feet you figure that if the current spacing is causing destructive interference (lining up peaks with troughs), then doubling the spacing must line up the peaks with peaks and increase signal! 
 
 ![Average of two microphones full wavelength apart](/assets/2023-6-21-two-microphones-noise-fullwave.gif)
 *Spacing the microphones a full wavelength apart increases the quality of the averaged signal by quite a bit! At least compared to the original spacing of half a wavelength (above)*
@@ -88,6 +88,7 @@ Let's try this out! To measure "signal quality" lets take the mean of the absolu
 From the above we see that our initial guess of the signals being delayed by $\Delta_{phase}=\pi/2=180deg$ is not that far from the best possible signal quality at $\Delta_{phase}=149deg$. 
 
 ![Shift signal by 149deg before averaging](/assets/2023-6-21-two-microphones-noise-best149.gif)
+*Here we shift the signal from microphone 1 (left) by exactly 149deg before averaging and see that the resulting averaged signal looks pretty good! This is because we have lined up the peaks with peaks before taking the average of the two signals.*
 
 
 ## DOA (direction of arrival) using beamforming
@@ -108,5 +109,7 @@ We can definitely help Bob record a better quality sound by adding an additional
 We could use the above to add even more microphones to our array and get an even better signal! If we assume the noise is not correlated and 0 centered, we can reduce noise much more by adding microphones to our array. In the approach above we did something a bit different than last time, the critical part from this time is that we exploited the wave nature of our signal. We did this by both bounding the distance between receivers by a factor of the wavelength and also by recording our signal in the complex plane (instead of just the real). 
 
 Given current hardware and physical constraints, using TDOA for estimating DOA from radio in a small space becomes challenging, if not impossible. However, we can (as above) exploit the wave part of the radio signal to still perform beamforming and estimate the direction of the source. 
+
+
 
 
