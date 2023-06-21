@@ -65,7 +65,7 @@ If we bound $x$ to an interval $[-\pi,\pi]$, we can narrow down $x$ to at most t
 ![complex sin(x+d)](/assets/2023-6-21-complex-sin.png)
 *To get around the limitation in computing $sin(x+d)$ (for small $d$) from $sin(x)$ we switch to using the complex value $e^{i(x-\pi/2)}$. This value lies on the complex unit circle and its real part is exactly $sin(x)$. To compute $sin(x+d)$ we use $sin(x+d)=Real(e^{i(x-\pi/2)}e^{id})$* 
 
-Luckily enough for us, someone else already developed the theory for complex numbers, and that is exactly what we need here! In the above image we can see that $sin(x)$ is really just the $real$ part of $ e^{i (x - \pi/2)} = cos(x - \pi/2) + i sin(x - \pi/2) = sin(x) + i sin( x - \pi/2)$ .  
+Luckily enough for us, someone else already developed complex numbers, and that is exactly what we need here! In the above image we can see that $sin(x)$ is really just the $real$ part of $ e^{i (x - \pi/2)} = cos(x - \pi/2) + i sin(x - \pi/2) = sin(x) + i sin( x - \pi/2)$ .  
 
 If we were to store the original signal somehow as a complex number ($e^{ix}$), we could use [complex multiplication](https://en.wikipedia.org/wiki/Complex_number#Multiplication_and_division_in_polar_form) to easily shift the real part of the signal by $\Delta$, 
 
