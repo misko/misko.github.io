@@ -53,12 +53,15 @@ It's clear from the above signal assumptions that we must limit $\Delta_{phase}$
 ## Complex numbers
 
 ![sin(x+d)](/assets/2023-6-21-sin.png)
+*$sin(x)$ on the interval $[-\pi,\pi]$ generally has two solutions. if we want to compute $sin(x+d)$ (for some small d) it is impossible to do accurately from just the value of $sin(x)$.*
+
 
 Let's say we have some signal $ sin(x) $ and we want to compute $ sin(x+\Delta) $ ($\Delta$ small), how can we do this? It's really not obvious. 
 
 If we bound $x$ to an interval $[-\pi,\pi]$, we can narrow down $x$ to at most two possible values. However one of these values has a positive derivative and the other negative, which means that computing $ sin(x+\Delta) $ will be impossible, because we don't know if we should go a little up or a little down. 
 
 ![complex sin(x+d)](/assets/2023-6-21-complex-sin.png)
+*To get around the limitation in computing $sin(x+d)$ (for small $d$) from $sin(x)$ we switch to using the complex value $e^{i(x-\pi/2)}$. This value lies on the complex unit circle and its real part is exactly $sin(x)$. To compute $sin(x+d)$ we use $sin(x+d)=Real(e^{i(x-\pi/2)}e^{id})$* 
 
 Luckily enough for us, someone else already developed the theory for complex numbers, and that is exactly what we need here! In the above image we can see that $sin(x)$ is really just the $real$ part of $ e^{i (x - \pi/2)} = cos(x - \pi/2) + i sin(x - \pi/2) = sin(x) + i sin( x - \pi/2)$ .  
 
@@ -71,6 +74,7 @@ $ sin(x+\Delta) = Real( e^{i (x - \pi/2 + \Delta) } = Real(  e^{i (x - \pi/2)} \
 That's a bunch of theory, but does this work? Let's give it a try! Eyeballing the above analysis it looks like the delay between microphones is close to the distance between microphones. Since we chose the distance between microphones to be $\lambda/2$ (half a wavelength), then an offset of $\Delta_{phase}=\pi$ should really help clean up the signal in the average, and that is exactly what we see!
 
 ![Shift signal by pi before averaging](/assets/2023-6-21-two-microphones-noise-pi-offset.gif)
+*It looks like the two microphones have a half wavelength delay between them. What does the average look like if we shift microphone 1 (left) by half a wavelength ($\Delta_{phase}=\pi$)*
 
 If we shift the signal from microphone 1 by $\lambda/2$ or $\Delta_{phase}=\pi$ before averaging signals between microphones we see a boost in resulting signal quality (red vs not shifting in green).
 
@@ -79,6 +83,7 @@ Maybe instead of guessing a fixed $\Delta_{phase}=\pi$ what we could do is enume
 Let's try this out! To measure "signal quality" lets take the mean of the absolute value of the signal, that way the larger the spikes (peaks or troughs) the better our "signal quality" measure will be.
 
 ![Beamforming](/assets/2023-6-21-beamform-rotate.gif)
+*Instead of guessing what the phase delay is between microphones, what if we try all possible phase delays in $[-\pi,\pi]$ and then use the one with the best signal? Here we phase shift the signal from microphone 1 (left) by all possible phase delays and plot the signal strength in the right most plot. It looks like the $\Delta_{phase}$ phase delay between the two microphones is $149deg$*
 
 From the above we see that our initial guess of the signals being delayed by $\Delta_{phase}=\pi/2=180deg$ is not that far from the best possible signal quality at $\Delta_{phase}=149deg$. 
 
