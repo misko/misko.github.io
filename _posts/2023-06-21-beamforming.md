@@ -2,7 +2,7 @@
 title: Introduction to beamforming
 date: 2023-06-21 12:00:00 -800
 categories: [signal_processing]
-tags: [signal_process,doa,tdoa]
+tags: [signal_process,doa,beamforming]
 math: true
 image: /assets/2023-6-11-post-image.png
 description: Let's do some basic beamforming
