@@ -12,6 +12,13 @@ description: Let's do some basic beamforming
 
 Your friend quiet Bob asked for your help to record his band's live show! Previously he used a single microphone in the bar to record their performances, but there was a lot of noise coming through on the recording and it was hard to hear the actual band. 
 
+### Minor details
+ 
+Some details that are not directly relevant but might help guide this post:
+* Speed of sound is ~ $341 m/s$
+* Wave frequency is $300hz$ (A relatively bass sound)
+* Wavelength here is $341/300=1.13 m$
+
 ![Single microphone recording](/assets/2023-6-21-single-microphone-recording.gif)
 *Using a single microphone you record the band's rehearsal and confirm it is noisy! The source here is the band and the receiver is the single microphone that is recording*
 
@@ -29,6 +36,7 @@ You get to thinking, if one microphone is too noisy, maybe the average of two mi
 Baffled by the results, you stare at the above analysis and try to figure out what is going on. It looks like the time delay between the two microphones lines up the peaks from one microphones signal with the troughs in the other microphones signal. This is probably causing [destructive interference](https://en.wikipedia.org/wiki/Wave_interference) and erasing the signal. Thinking on your feet you figure that if the current spacing is causing destructive interference (lining up peaks with troughts), then doubling the spacing must line up the peaks with peaks and increase signal! 
 
 ![Average of two microphones full wavelength apart](/assets/2023-6-21-two-microphones-noise-fullwave.gif)
+*Spacing the microphones a full wavelength apart increases the quality of the averaged signal by quite a bit! At least compared to the original spacing of half a wavelength (above)*
 
 By golly! It worked! The noise is reduced (even though only a little) and the signal prevails. You can't help but wonder, if the angle between the microphones and the direction of the source sound matters, was it just luck that half wavelength was a bad spacing and full wavelength was a good spacing? Is there a better spacing you could choose for this setup? What if instead of changing the spacing, you just artificially reduce the delay from the second microphone, would that fix the averaging issue? By how much time should you shift the signal from the second microphone? 
 
