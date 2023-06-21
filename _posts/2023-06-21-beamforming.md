@@ -104,11 +104,11 @@ $\theta=sin^{-1}(\frac{\Delta_{space}}{d})=sin^{-1}( \frac{(149deg/360deg) \cdot
 
 ## Conclusion
 
-We can definitely help Bob record a better quality sound by adding an additional microphone to his recording setup. Even more than just increasing the signal quality by an additional microphone we have developed a beamformer to help us evaluate direction of arrival, given some guess of direction ($\Delta_{phase}$) we can compute a signal strength measure. Under the assumption that the signal strength is maximal when we guess the right direction, we can use beamforming to estimate the direction of the source!
+We can definitely help Bob record a better quality sound by adding an additional microphone to his recording setup. Even more than just increasing the signal quality by an additional microphone we have developed a beamformer to help us evaluate direction of arrival. Given some guess of direction ($\Delta_{phase}$) we can compute a signal strength measure. Under the assumption that the signal strength is maximal when we guess the right direction, we can use beamforming to estimate the direction of the source!
 
-We could use the above to add even more microphones to our array and get an even better signal! If we assume the noise is not correlated and 0 centered, we can reduce noise much more by adding microphones to our array. In the approach above we did something a bit different than last time, the critical part from this time is that we exploited the wave nature of our signal. We did this by both bounding the distance between receivers by a factor of the wavelength and also by recording our signal in the complex plane (instead of just the real). 
+We could use the techniques above to add even more microphones to our array and get an even better signal! If we assume the noise is not correlated and 0 centered, we can reduce noise much more by adding microphones to our array. In the approach above we did something a bit different than last time, the critical part from this time is that we exploited the wave nature of our signal. We did this by both bounding the distance between receivers by a factor of the wavelength and also by recording our signal in the complex plane (instead of just the real). 
 
-Given current hardware and physical constraints, using TDOA for estimating DOA from radio in a small space becomes challenging, if not impossible. However, we can (as above) exploit the wave part of the radio signal to still perform beamforming and estimate the direction of the source. 
+Given current hardware and physical constraints, using TDOA for estimating DOA from radio signals in a small space becomes challenging, if not impossible. However, we can (as above) exploit the wave part of the radio signal to perform beamforming and estimate the direction of the source. 
 
 
 
